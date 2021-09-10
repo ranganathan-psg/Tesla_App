@@ -1,9 +1,9 @@
 import 'package:coast/coast.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_shadow/simple_shadow.dart';
-import 'package:tesla_demo/constants/colorConstant.dart';
-import 'package:tesla_demo/pages/widgets/lastTripContainer.dart';
-import 'package:tesla_demo/pages/widgets/sizedBox20.dart';
+import 'package:tesla_demo/constants/color_constant.dart';
+import 'package:tesla_demo/pages/widgets/last_trip_container.dart';
+import 'package:tesla_demo/pages/widgets/sizedbox_20.dart';
 
 class LastScreen extends StatelessWidget {
   const LastScreen({Key? key}) : super(key: key);
@@ -11,39 +11,40 @@ class LastScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0XffF0F1EF),
+      backgroundColor: const Color(0xFFF0F1EF),
       body: Stack(
-        children: [
+        children: <Widget>[
           Positioned(
             top: -400,
             right: -110,
             child: Crab(
               tag: "tesla",
-              child: Container(
+              child: SizedBox(
                 height: 750,
                 child: SimpleShadow(
                   child: SimpleShadow(
                     child: Image.asset("assets/images/tesla2.png"),
                     color: Colors.red,
                     opacity: 1,
-                    offset: Offset(28, 20), // Default: Offset(2, 2)
+                    offset: const Offset(28, 20),
+                    // Default: Offset(2, 2)
                     sigma: 15,
                   ),
                   opacity: 1, // Default: 0.5
                   // color: shadowColor, // Default: Black
-                  offset: Offset(0, 15), // Default: Offset(2, 2)
+                  offset: const Offset(0, 15), // Default: Offset(2, 2)
                   sigma: 15,
                 ),
               ),
             ),
           ),
-          Positioned(
+          const Positioned(
             left: 10,
             top: 20,
             child: SafeArea(
               bottom: false,
               child: Padding(
-                padding: const EdgeInsets.only(left: 20),
+                padding: EdgeInsets.only(left: 20),
                 child: Icon(
                   Icons.notes_rounded,
                   color: Colors.black,
@@ -58,20 +59,18 @@ class LastScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                children: <Widget>[
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Row(
                       // mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
+                      children: <Widget>[
                         Icon(
                           Icons.keyboard_arrow_down_sharp,
                           size: 25,
                           color: Colors.grey[600],
                         ),
-                        SizedBox(
-                          width: 5,
-                        ),
+                        const SizedBox(width: 5),
                         Text(
                           "LAST TRIP",
                           style: TextStyle(
@@ -83,21 +82,15 @@ class LastScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(
-                    height: 8,
-                  ),
+                  const SizedBox(height: 8),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      LastTripContainer("TOTAL 0:20", "1014 Jedzi Drive"),
-                      SizedBox(
-                        height: 3,
-                      ),
-                      LastTripContainer("TOTAL 1:15", "376 Suri Place"),
-                      SizedBox(
-                        height: 3,
-                      ),
-                      LastTripContainer("TOTAL 0:45", "1592 Izapu Road"),
+                    children: <Widget>[
+                      const LastTripContainer(subTitle: "TOTAL 0:20", title: "1014 Jedzi Drive"),
+                      const SizedBox(height: 3),
+                      const LastTripContainer(subTitle: "TOTAL 1:15", title: "376 Suri Place"),
+                      const SizedBox(height: 3),
+                      const LastTripContainer(subTitle: "TOTAL 0:45", title: "1592 Izapu Road"),
                       SizedBox20H,
                       Container(
                         height: 70,
@@ -106,7 +99,7 @@ class LastScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(30),
                           color: containerGrey,
                         ),
-                        child: Center(
+                        child: const Center(
                           child: Text(
                             "More Trips",
                             style: TextStyle(

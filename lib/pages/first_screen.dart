@@ -1,11 +1,9 @@
 import 'package:coast/coast.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:simple_shadow/simple_shadow.dart';
-import 'package:tesla_demo/constants/colorConstant.dart';
-import 'package:tesla_demo/pages/homescreen.dart';
-import 'package:tesla_demo/pages/lastScreen.dart';
-import 'package:tesla_demo/pages/secondPage.dart';
+import 'package:tesla_demo/pages/home_screen.dart';
+import 'package:tesla_demo/pages/last_screen.dart';
+import 'package:tesla_demo/pages/second_page.dart';
 
 class FirstScreen extends StatefulWidget {
   const FirstScreen({Key? key}) : super(key: key);
@@ -17,24 +15,20 @@ class FirstScreen extends StatefulWidget {
 class _FirstScreenState extends State<FirstScreen> {
   @override
   Widget build(BuildContext context) {
-    GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey();
-    final _coastController = CoastController();
+    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey();
 
-    PageController _pageController = PageController();
-    void nextPage(page) {
-      // _pageController.animateToPage(_pageController.page!.toInt() + 1,
-      //     duration: Duration(milliseconds: 800), curve: Curves.easeIn);
+    final CoastController _coastController = CoastController();
+    //final PageController _pageController = PageController();
 
-      _coastController.animateTo(
-          beach: page,
-          duration: Duration(milliseconds: 1000),
-          curve: Curves.easeIn);
+    void nextPage(int page) {
+      //_pageController.animateToPage(_pageController.page!.toInt() + 1, duration: Duration(milliseconds: 800), curve: Curves.easeIn);
+      _coastController.animateTo(beach: page, duration: const Duration(milliseconds: 1000), curve: Curves.easeIn);
     }
 
-    final _beaches = [
-      Beach(builder: (context) => HomeScreen(nextPage)),
-      Beach(builder: (context) => SecondScree(nextPage)),
-      Beach(builder: (context) => LastScreen()),
+    final List<Beach> _beaches = <Beach>[
+      Beach(builder: (BuildContext context) => HomeScreen(nextPage: nextPage)),
+      Beach(builder: (BuildContext context) => SecondScreen(nextPage: nextPage)),
+      Beach(builder: (BuildContext context) => const LastScreen()),
     ];
 
     return Scaffold(
@@ -46,7 +40,8 @@ class _FirstScreenState extends State<FirstScreen> {
       //     color: Colors.black,
       //   ),
       // ),
-      backgroundColor: Color(0XffF0F1EF),
+      key: scaffoldKey,
+      backgroundColor: const Color(0xFFF0F1EF),
       // body: PageView(
       //   pageSnapping: false,
       //   controller: _pageController,
@@ -61,7 +56,7 @@ class _FirstScreenState extends State<FirstScreen> {
         beaches: _beaches,
         allowImplicitScrolling: true,
         controller: _coastController,
-        observers: [
+        observers: <CrabController>[
           CrabController(),
         ],
       ),

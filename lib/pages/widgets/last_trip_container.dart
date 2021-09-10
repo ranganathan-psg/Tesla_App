@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 
 class LastTripContainer extends StatelessWidget {
-  final subTitle;
-  final title;
+  const LastTripContainer({
+    Key? key,
+    required this.subTitle,
+    required this.title,
+  }) : super(key: key);
 
-  const LastTripContainer(this.subTitle, this.title);
+  final String subTitle;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -15,15 +19,14 @@ class LastTripContainer extends StatelessWidget {
       child: Container(
         height: 80,
         width: MediaQuery.of(context).size.width - 40,
-        decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(30)),
+        decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(30)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          children: <Widget>[
             Padding(
               padding: const EdgeInsets.all(20).copyWith(top: 25, right: 15),
-              child: Icon(
+              child: const Icon(
                 Icons.location_on_rounded,
                 size: 28,
                 color: Colors.grey,
@@ -34,7 +37,7 @@ class LastTripContainer extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                children: <Widget>[
                   Text(
                     subTitle,
                     style: TextStyle(
@@ -43,12 +46,10 @@ class LastTripContainer extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(
-                    height: 2,
-                  ),
+                  const SizedBox(height: 2),
                   Text(
                     title,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 16,
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
